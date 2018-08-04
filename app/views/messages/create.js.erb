@@ -1,0 +1,8 @@
+var conversation = $('#conversations-list').find("[data-conversation-id='" + "<%= @conversation.id %>" + "']");
+if ("<%= current_user.present? %>") {
+  conversation.find('.messages-list').find('ul').append("<%= j(render 'messages/message', message: @message, user: current_user) %>");
+}
+else {
+  conversation.find('.messages-list').find('ul').append("<%= j(render 'messages/message', message: @message, user: current_pro) %>");
+}
+conversation.find('textarea').val('');
